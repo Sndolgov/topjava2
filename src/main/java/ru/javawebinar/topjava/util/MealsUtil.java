@@ -26,6 +26,15 @@ public class MealsUtil {
             new Meal(LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 510)
     );
 
+    public static final List<Meal> ADMIN_MEALS = Arrays.asList(
+            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 10, 0), "Завтрак Админа", 500),
+            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед Админа", 1000)
+    );
+
+    public static Meal updateMeal(){
+        return new Meal(8, LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Updated Обед Админа", 1000);
+    }
+
     public static final int DEFAULT_CALORIES_PER_DAY = 2000;
 
     public static List<MealWithExceed> getWithExceeded(Collection<Meal> meals, int caloriesPerDay) {
