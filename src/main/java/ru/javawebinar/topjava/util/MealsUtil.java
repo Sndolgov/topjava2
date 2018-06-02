@@ -31,6 +31,10 @@ public class MealsUtil {
             new Meal(LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед Админа", 1000)
     );
 
+    public static Meal newMeal(){
+        return new Meal(null, LocalDateTime.now(), "New meal", 777);
+    }
+
     public static Meal updateMeal(){
         return new Meal(8, LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Updated Обед Админа", 1000);
     }

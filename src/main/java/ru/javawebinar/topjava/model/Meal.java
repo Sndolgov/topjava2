@@ -1,5 +1,7 @@
 package ru.javawebinar.topjava.model;
 
+import ru.javawebinar.topjava.util.DateTimeUtil;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -49,7 +51,7 @@ public class Meal extends AbstractBaseEntity{
     public String toString() {
         return "Meal{" +
                 "id=" + id +
-                ", dateTime=" + dateTime +
+                ", dateTime=" + DateTimeUtil.toString(dateTime) +
                 ", description='" + description + '\'' +
                 ", calories=" + calories +
                 '}';
