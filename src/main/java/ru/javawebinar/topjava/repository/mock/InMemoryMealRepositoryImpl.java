@@ -7,13 +7,9 @@ import ru.javawebinar.topjava.util.DateTimeUtil;
 import ru.javawebinar.topjava.util.MealsUtil;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Month;
-import java.time.temporal.TemporalAdjuster;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -70,14 +66,5 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
         return meals==null? Stream.empty():meals.values().stream().sorted(Comparator.comparing(Meal::getDateTime).reversed());
     }
 
-/*
-    public static void main(String[] args) {
-        InMemoryMealRepositoryImpl repository = new InMemoryMealRepositoryImpl();
-        repository.save(MealsUtil.updateMeal(), ADMIN_ID);
-        System.out.println(repository.getAll(ADMIN_ID));
-        System.out.println(repository.get(8, ADMIN_ID));
-        System.out.println(repository.getAllBetween(USER_ID, LocalDate.of(2015, Month.MAY, 30), LocalDate.of(2015, Month.MAY, 30)));
-    }
-*/
 }
 

@@ -25,10 +25,10 @@ public class SpringMain {
 //            adminUserController.update(new User(null, "userUpdated", "email", "password", Role.ROLE_ADMIN), 100003);
 //            System.out.println("Updated user: "+adminUserController.get(100002));
             MealRestController mealRestController = appCtx.getBean(MealRestController.class);
-            mealRestController.update(MealsUtil.updateMeal(), MealsUtil.updateMeal().getId(), ADMIN_ID);
-            System.out.println("Admin meal: "+ mealRestController.getAll(ADMIN_ID));
-            mealRestController.delete(8, ADMIN_ID);
-            System.out.println("Admin meal: "+ mealRestController.getAll(ADMIN_ID));
+            mealRestController.update(MealsUtil.updateMeal(), MealsUtil.updateMeal().getId());
+            System.out.println("User meal: "+ mealRestController.getAll());
+            mealRestController.delete(5);
+            System.out.println("User meal: "+ mealRestController.getAll());
         }
     }
 }
