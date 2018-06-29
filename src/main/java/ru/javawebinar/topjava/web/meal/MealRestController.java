@@ -61,7 +61,7 @@ public class MealRestController {
         int userId = AuthorizedUser.id();
         log.info("getAll meals of user {}", userId);
         LocalDate sd = startDate!=null?startDate:LocalDate.MIN;
-        LocalDate ed = endDate!=null?startDate:LocalDate.MAX;
+        LocalDate ed = endDate!=null?endDate:LocalDate.MAX;
         LocalTime st = startTime!=null?startTime:LocalTime.MIN;
         LocalTime et = endTime!=null?endTime:LocalTime.MAX;
 

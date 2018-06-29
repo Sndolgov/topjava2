@@ -5,8 +5,14 @@ import static ru.javawebinar.topjava.util.UsersUtil.USER_ID;
 
 public class AuthorizedUser {
 
+    private static int id = USER_ID;
+
+    public static void setId(int id) {
+        AuthorizedUser.id = id;
+    }
+
     public static int id() {
-        return USER_ID;
+        return id;
     }
 
     public static int getCaloriesPerDay() {
