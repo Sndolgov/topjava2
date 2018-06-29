@@ -77,9 +77,4 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
                         .sorted(Comparator.comparing(Meal::getDateTime).reversed())
                         .collect(Collectors.toList());
     }
-
-    public static void main(String[] args) {
-        InMemoryMealRepositoryImpl repository = new InMemoryMealRepositoryImpl();
-        repository.getAllFiltered(10, meal -> DateTimeUtil.isBetween(meal.getDateTime(), LocalDateTime.now(), LocalDateTime.now()));
-    }
 }
