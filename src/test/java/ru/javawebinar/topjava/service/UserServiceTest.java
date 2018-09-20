@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringRunner;
+import ru.javawebinar.topjava.MealTestData;
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
@@ -17,6 +18,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import static ru.javawebinar.topjava.MealTestData.*;
+import static ru.javawebinar.topjava.MealTestData.MEAL2;
 import static ru.javawebinar.topjava.UserTestData.*;
 
 @ContextConfiguration({
@@ -90,5 +93,10 @@ public class UserServiceTest {
     public void getAll() throws Exception {
         List<User> all = service.getAll();
         assertMatch(all, ADMIN, USER);
+    }
+
+    @Test
+    public void getMeals() throws Exception{
+        MealTestData.assertMatch(service.getMeals(USER_ID), MEAL6, MEAL5, MEAL4, MEAL3, MEAL2, MEAL1);
     }
 }

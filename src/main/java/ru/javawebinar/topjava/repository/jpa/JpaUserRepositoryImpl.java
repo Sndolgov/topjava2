@@ -2,13 +2,19 @@ package ru.javawebinar.topjava.repository.jpa;
 
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import static org.springframework.transaction.annotation.Propagation.*;
 
 @Repository
 @Transactional(readOnly = true)
@@ -68,5 +74,12 @@ public class JpaUserRepositoryImpl implements UserRepository {
     @Override
     public List<User> getAll() {
         return em.createNamedQuery(User.ALL_SORTED, User.class).getResultList();
+    }
+
+    @Override
+    public List<Meal> getMeals(int id) {
+        User user = get(id);
+        em.refresh(get(id));
+        return user.getMeals();
     }
 }
