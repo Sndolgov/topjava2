@@ -39,6 +39,8 @@ public class JpaUserRepositoryImpl implements UserRepository {
             em.persist(user);
             return user;
         } else {
+            User oldUser = em.getReference(User.class, user.getId());
+            user.setMeals(oldUser.getMeals());
             return em.merge(user);
         }
     }
@@ -78,8 +80,20 @@ public class JpaUserRepositoryImpl implements UserRepository {
 
     @Override
     public List<Meal> getMeals(int id) {
-        User user = get(id);
+        /*User user = get(id);
         em.refresh(get(id));
+        return user.getMeals();*/
+
+        User user = em.createNamedQuery(User.GET_MEALS, User.class)
+                .setParameter("id", id)
+                .getSingleResult();
+
+       /* List <User> users = em.createNamedQuery(User.GET_MEALS, User.class)
+                .setParameter("id", id)
+                .getResultList();
+        User user = DataAccessUtils.singleResult(users);
+        List <Meal> meals = user.getMeals();*/
+
         return user.getMeals();
     }
 }
