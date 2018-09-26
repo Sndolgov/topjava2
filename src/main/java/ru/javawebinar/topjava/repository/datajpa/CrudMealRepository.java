@@ -38,28 +38,8 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
             "WHERE m.user.id=?3 AND m.dateTime BETWEEN ?1 AND ?2 ORDER BY m.dateTime DESC")
     List<Meal> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId);
 
-    /*    @Override
-    public Meal save(Meal Meal, int userId) {
-        return null;
-    }
+    @Modifying
+    @Query("SELECT m FROM Meal m left join fetch m.user WHERE m.id=?1 ")
+    List<Meal> withUser(int id);
 
-    @Override
-    public boolean delete(int id, int userId) {
-        return false;
-    }
-
-    @Override
-    public Meal get(int id, int userId) {
-        return null;
-    }
-
-    @Override
-    public List<Meal> getAll(int userId) {
-        return null;
-    }
-
-    @Override
-    public List<Meal> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId) {
-        return null;
-    }*/
 }
