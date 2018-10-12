@@ -40,7 +40,6 @@ public class MealServlet extends HttpServlet {
                     LocalDateTime.parse(request.getParameter("dateTime")),
                     request.getParameter("description"),
                     Integer.parseInt(request.getParameter("calories")));
-
             if (request.getParameter("id").isEmpty()) {
                 mealController.create(meal);
             } else {
