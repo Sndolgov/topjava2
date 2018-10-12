@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.javawebinar.topjava.AuthorizedUser;
 import ru.javawebinar.topjava.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,8 @@ public class RootController {
     @PostMapping("/users")
     public String setUser(HttpServletRequest request) {
         int userId = Integer.valueOf(request.getParameter("userId"));
-        SecurityUtil.setAuthUserId(userId);
+        //SecurityUtil.setAuthUserId(userId);
+        AuthorizedUser.id();
         return "redirect:meals";
     }
 }
