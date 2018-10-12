@@ -23,8 +23,6 @@ import java.util.List;
 @Transactional
 public class JdbcMealRepositoryImpl implements MealRepository {
 
-    @Autowired
-    private DataSourceTransactionManager transactionManager;
 
     private static final RowMapper<Meal> ROW_MAPPER = BeanPropertyRowMapper.newInstance(Meal.class);
 
