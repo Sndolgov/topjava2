@@ -14,6 +14,7 @@ import java.util.Collections;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static ru.javawebinar.topjava.TestUtil.contentJson;
 import static ru.javawebinar.topjava.UserTestData.*;
 
 public class AdminRestControllerTest extends AbstractControllerTest {

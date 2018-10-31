@@ -15,6 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static ru.javawebinar.topjava.MealTestData.*;
+import static ru.javawebinar.topjava.TestUtil.contentJson;
 import static ru.javawebinar.topjava.UserTestData.ADMIN_ID;
 import static ru.javawebinar.topjava.UserTestData.USER_ID;
 
@@ -42,7 +43,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
                 .andDo(print())
                 .andExpect(status().isNoContent());
         assertMatch(mealService.getAll(ADMIN_ID), ADMIN_MEAL2);
-        //  AuthorizedUser.setId(USER_ID);
+          AuthorizedUser.setId(USER_ID);
     }
 
     @Test
@@ -53,7 +54,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(contentJson(ADMIN_MEAL2, ADMIN_MEAL1));
-        //  AuthorizedUser.setId(USER_ID);
+          AuthorizedUser.setId(USER_ID);
     }
 
     @Test

@@ -2,11 +2,17 @@ package ru.javawebinar.topjava.web;
 
 import org.junit.Test;
 import ru.javawebinar.topjava.AuthorizedUser;
+import ru.javawebinar.topjava.MealTestData;
+import ru.javawebinar.topjava.util.MealsUtil;
+
+import java.util.Arrays;
 
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static ru.javawebinar.topjava.MealTestData.ADMIN_MEAL1;
+import static ru.javawebinar.topjava.MealTestData.ADMIN_MEAL2;
 import static ru.javawebinar.topjava.UserTestData.ADMIN_ID;
 import static ru.javawebinar.topjava.UserTestData.USER;
 import static ru.javawebinar.topjava.UserTestData.USER_ID;
@@ -39,13 +45,8 @@ public class RootControllerTest extends AbstractControllerTest {
                 .andExpect(view().name("meals"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/meals.jsp"))
                 .andExpect(model().attribute("meals", hasSize(2)))
-                .andExpect(model().attribute("meals", hasItem(
-                        allOf(
-                                hasProperty("description", is("Админ ужин")),
-                                hasProperty("calories", is(1500))
+                .andExpect(model().attribute("meals", MealsUtil.getWithExceeded(Arrays.asList(ADMIN_MEAL2, ADMIN_MEAL1), SecurityUtil.authUserCaloriesPerDay())));
 
-                        )
-                )));
         AuthorizedUser.setId(USER_ID);
     }
 }

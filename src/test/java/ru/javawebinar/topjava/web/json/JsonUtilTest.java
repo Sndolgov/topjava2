@@ -1,6 +1,6 @@
 package ru.javawebinar.topjava.web.json;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import ru.javawebinar.topjava.model.Meal;
 
 import java.util.List;
