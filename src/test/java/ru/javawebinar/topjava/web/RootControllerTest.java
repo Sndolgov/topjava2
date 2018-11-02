@@ -8,6 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.javawebinar.topjava.UserTestData.USER;
 import static ru.javawebinar.topjava.model.AbstractBaseEntity.START_SEQ;
+import ru.javawebinar.topjava.MealTestData;
+import ru.javawebinar.topjava.util.MealsUtil;
 
 public class RootControllerTest extends AbstractControllerTest {
 
@@ -26,4 +28,15 @@ public class RootControllerTest extends AbstractControllerTest {
                         )
                 )));
     }
+
+    @Test
+    void testMeals() throws Exception {
+        mockMvc.perform(get("/meals"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("meals"))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/meals.jsp"))
+                .andExpect(model().attribute("meals", MealsUtil.getWithExceeded(MealTestData.MEALS, SecurityUtil.authUserCaloriesPerDay())));
+    }
+
 }
