@@ -8,6 +8,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import ru.javawebinar.topjava.TestUtil;
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
+import static ru.javawebinar.topjava.TestUtil.readFromJson;
+
 
 import java.util.Collections;
 
@@ -67,7 +69,7 @@ public class AdminRestControllerTest extends AbstractControllerTest {
                 .content(JsonUtil.writeValue(expected)))
                 .andExpect(status().isCreated());
 
-        User returned = TestUtil.readFromJson(action, User.class);
+        User returned = readFromJson(action, User.class);
         expected.setId(returned.getId());
 
         assertMatch(returned, expected);
