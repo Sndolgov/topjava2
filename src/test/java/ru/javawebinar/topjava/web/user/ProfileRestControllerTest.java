@@ -1,6 +1,6 @@
 package ru.javawebinar.topjava.web.user;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.http.MediaType;
 import ru.javawebinar.topjava.TestUtil;
 import ru.javawebinar.topjava.model.Role;
