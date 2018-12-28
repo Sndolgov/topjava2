@@ -1,7 +1,10 @@
-var ajaxUrl = "/ajax/meals/";
+var ajaxUrl = "ajax/meals/";
 var datatableApi;
 
-// $(document).ready(function () {
+function clearFilter(){
+    $("#filter").find(":input").val("");
+}
+
 $(function () {
     datatableApi = $("#datatable").DataTable({
         "paging": false,
@@ -33,4 +36,5 @@ $(function () {
         ]
     });
     makeEditable();
+    clearFilter();
 });
